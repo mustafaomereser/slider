@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+
+    <link rel="stylesheet" href="assets/lib/slider/css/style.css">
+</head>
+<style>
+    body {
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        /* background: rgb(37, 37, 37); */
+    }
+</style>
+
+<body>
+
+    <div style="padding: 20px;">
+
+        <div id="slider" class="data-slider" carousel="true" carousel-time="3">
+
+            <div thumb="assets/images/sliders/cadence-tas-efekti-rolyef-pasta.jpg">
+                <img src="assets/images/sliders/cadence-tas-efekti-rolyef-pasta.jpg" style="width: 100%;" />
+            </div>
+
+            <div thumb="assets/images/sliders/mail-order.jpg">
+                <img src="assets/images/sliders/mail-order.jpg" style="width: 100%;" />
+            </div>
+
+            <div thumb="assets/images/sliders/ucretsiz-kargo-slider.jpg">
+                <img src="assets/images/sliders/ucretsiz-kargo-slider.jpg" style="width: 100%;" />
+            </div>
+
+            <div thumb="assets/images/sliders/ucretsiz-kapida-odeme-slider.jpg">
+                <img src="assets/images/sliders/ucretsiz-kapida-odeme-slider.jpg" style="width: 100%;" />
+            </div>
+
+
+            <!-- <button class="slider-navigate-button" type="previous" style="left: 0;">⇦</button>
+            <button class="slider-navigate-button" type="next" style="right: 0;">⇨</button> -->
+
+        </div>
+    </div>
+
+    <script src="assets/lib/slider/js/script.js"></script>
+    <script>
+        $.slider.build('#slider');
+    </script>
+</body>
+
+</html>
