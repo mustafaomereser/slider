@@ -7,7 +7,7 @@
     display: flex;
     width: 99%;
     margin-left: .5%;
-    margin-top: 5px;
+    margin-top: .7%;
 }
 
 .data-slider * {
@@ -57,7 +57,7 @@
 }
 
 .data-slider .item * {
-    border-radius: 0.5%;
+    border-radius: .5%;
 }
 
 .data-slider .item[class~="active"] {

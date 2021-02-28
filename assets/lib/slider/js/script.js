@@ -41,36 +41,6 @@ $ = {
                             item.setAttribute("data-key", index);
                             item.setAttribute("data-slider-key", sliderKey);
 
-                        } else {
-
-                            if (item.classList.value.search('slider-navigate-button') >= 0) {
-
-                                let type = item.getAttribute('type');
-
-                                let slide = parseInt(document.querySelector(`[data-slider-key="${sliderKey}"]`).getAttribute('data-slide-index'));
-
-                                // item.addEventListener('click', function () {
-                                //     console.log("sa");
-                                // });
-
-                                if (type == "previous") {
-
-                                    item.addEventListener('click', function () {
-                                        $.slider.selectSlider((slide - 1), sliderKey);
-                                    });
-
-                                } else if (type == "next") {
-
-                                    item.addEventListener('click', function () {
-                                        $.slider.selectSlider((slide + 1), sliderKey);
-                                    });
-
-                                } else {
-                                    console.error("Geçersiz button tipi!");
-                                }
-
-                            }
-
                         }
                     });
 
@@ -103,6 +73,42 @@ $ = {
                         }, ((time ? time : 1) * 1000));
                     }
 
+                    if (slider.getAttribute('navigate') == "true") {
+
+                        [
+                            ['previous', '⇦', 'left'],
+                            ['next', '⇨', 'right']
+                        ].forEach(function (item) {
+
+                            let type = item[0];
+
+                            let btn = document.createElement("BUTTON");
+                            btn.innerHTML = item[1];
+                            btn.classList.add('slider-navigate-button');
+                            btn.setAttribute('type', type);
+                            btn.style[item[2]] = 0;
+
+
+                            if (type == "previous") {
+                                btn.addEventListener('click', function () {
+                                    let slide = parseInt(document.querySelector(`[data-slider-key="${sliderKey}"]`).getAttribute('data-slide-index'));
+                                    $.slider.selectSlider((slide - 1), sliderKey);
+                                    console.log(slide);
+                                });
+
+                            } else if (type == "next") {
+                                btn.addEventListener('click', function () {
+                                    let slide = parseInt(document.querySelector(`[data-slider-key="${sliderKey}"]`).getAttribute('data-slide-index'));
+                                    $.slider.selectSlider((slide + 1), sliderKey);
+                                });
+
+                            }
+
+                            slider.appendChild(btn);
+                        });
+
+                    }
+
                 });
 
             } else {
@@ -115,8 +121,16 @@ $ = {
 
             let element = document.querySelectorAll(`[data-slider-key="${key}"][data-key]`);
 
-            if ((index + 1) > (element.length / 2)) {
+            let max = (element.length / 2);
+            let min = 0;
+            let now = (index + 1);
+
+            if (now > max) {
                 index = 0;
+            }
+            
+            if (now <= min) {
+                index = max-1;
             }
 
             element.forEach(item => {
