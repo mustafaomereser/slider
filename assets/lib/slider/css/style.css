@@ -1,3 +1,9 @@
+:root {
+    --dot-border: #ddd;
+    --dot-border-active: rgb(172, 171, 171);
+    --white: #fff;
+}
+
 .data-slider {
     position: relative;
 }
@@ -30,7 +36,7 @@
 
 .data-slider .dots .dot * {
     border-radius: 2%;
-    border: .5px solid #ddd;
+    border: .5px solid var(--dot-border);
 }
 
 .data-slider .dots .dot:not([class~="active"]) {
@@ -48,7 +54,7 @@
 }
 
 .data-slider .dots .dot[class~="active"] * {
-    border: .5px solid rgb(172, 171, 171);
+    border: .5px solid var(--dot-border-active);
 }
 
 .data-slider .item {
@@ -72,11 +78,13 @@
 
 .data-slider .slider-navigate-button {
     border: none;
+    border-radius: 5%;
     background: none;
-    color: #fff;
+    color: var(--white);
+    background-color: var(--dot-border-active);
     font-weight: bold;
     font-size: 5vh;
-    opacity: .6;
+    opacity: .2;
     outline: none;
     cursor: pointer;
     position: absolute;
