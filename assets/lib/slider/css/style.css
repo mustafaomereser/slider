@@ -79,6 +79,7 @@
 .data-slider .slider-navigate-button {
     border: none;
     border-radius: 5%;
+    padding: 5px;
     background: none;
     color: var(--white);
     background-color: var(--dot-border-active);
