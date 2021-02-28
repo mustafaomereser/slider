@@ -52,8 +52,11 @@
 }
 
 .data-slider .item {
-    display: none;
     width: 100%;
+    transition: opacity 1s ease-out;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
 }
 
 .data-slider .item * {
@@ -61,7 +64,9 @@
 }
 
 .data-slider .item[class~="active"] {
-    display: block;
+    opacity: 1;
+    height: auto;
+    transition: 200ms opacity;
 }
 
 .data-slider .slider-navigate-button {
