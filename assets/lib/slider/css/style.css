@@ -79,12 +79,12 @@
 .data-slider .slider-navigate-button {
     border: none;
     border-radius: 5%;
-    padding: 5px;
+    padding: 1vh;
     background: none;
     color: var(--white);
     background-color: var(--dot-border-active);
     font-weight: bold;
-    font-size: 5vh;
+    font-size: 4vh;
     opacity: .2;
     outline: none;
     cursor: pointer;
