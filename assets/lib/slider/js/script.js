@@ -90,19 +90,28 @@ $ = {
 
 
                             if (type == "previous") {
-                                btn.addEventListener('click', function () {
+
+                                _f = () => {
                                     let slide = parseInt(document.querySelector(`[data-slider-key="${sliderKey}"]`).getAttribute('data-slide-index'));
                                     $.slider.selectSlider((slide - 1), sliderKey);
-                                    console.log(slide);
-                                });
+                                };
 
                             } else if (type == "next") {
-                                btn.addEventListener('click', function () {
+                                _f = () => {
                                     let slide = parseInt(document.querySelector(`[data-slider-key="${sliderKey}"]`).getAttribute('data-slide-index'));
                                     $.slider.selectSlider((slide + 1), sliderKey);
-                                });
-
+                                };
                             }
+
+                            btn.addEventListener('mouseenter', function () {
+                                if (mouse) {
+                                    _f();
+                                }
+                            });
+
+                            btn.addEventListener('click', function () {
+                                _f();
+                            });
 
                             slider.appendChild(btn);
                         });
@@ -128,9 +137,9 @@ $ = {
             if (now > max) {
                 index = 0;
             }
-            
+
             if (now <= min) {
-                index = max-1;
+                index = (max - 1);
             }
 
             element.forEach(item => {
