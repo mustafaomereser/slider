@@ -69,7 +69,7 @@ $.slider = {
 
                 if (slider.getAttribute('carousel') == "true") {
 
-                    let time = parseInt(slider.getAttribute('carousel-time'));
+                    let time = parseFloat(slider.getAttribute('carousel-time'));
 
                     $.slider.sliderList[sliderKey] = function () {
                         return setInterval(function () {
