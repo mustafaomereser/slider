@@ -12,10 +12,9 @@ body.addEventListener('mouseup', function () {
 
 $ = {};
 
-$.sliderList = {};
-
 $.slider = {
-
+    sliderList: {},
+    
     build: (_) => {
         let sliders = document.querySelectorAll(_);
 
@@ -72,14 +71,14 @@ $.slider = {
 
                     let time = parseInt(slider.getAttribute('carousel-time'));
 
-                    $.sliderList[sliderKey] = function () {
+                    $.slider.sliderList[sliderKey] = function () {
                         return setInterval(function () {
                             let index = parseInt(document.querySelector(`[data-slider-key="${sliderKey}"]`).getAttribute('data-slide-index'));
                             $.slider.selectSlider(index + 1, sliderKey);
                         }, ((time ? time : 1) * 1000));
                     };
 
-                    $.sliderList[sliderKey]['carouselFunctionCache'] = $.sliderList[sliderKey]();
+                    $.slider.sliderList[sliderKey]['carouselFunctionCache'] = $.slider.sliderList[sliderKey]();
 
                 }
 
@@ -136,10 +135,10 @@ $.slider = {
     },
     selectSlider: (index, key) => {
 
-        let listItem = $.sliderList[key];
+        let listItem = $.slider.sliderList[key];
         if (listItem) {
             clearInterval(listItem['carouselFunctionCache']);
-            $.sliderList[key]['carouselFunctionCache'] = listItem();
+            $.slider.sliderList[key]['carouselFunctionCache'] = listItem();
         }
 
         index = parseInt(index);
