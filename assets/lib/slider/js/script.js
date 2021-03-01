@@ -14,7 +14,7 @@ $ = {};
 
 $.slider = {
     sliderList: {},
-    
+
     build: (_) => {
         let sliders = document.querySelectorAll(_);
 
@@ -97,30 +97,25 @@ $.slider = {
                         btn.setAttribute('type', type);
                         btn.style[item[2]] = 0;
 
+                        console.log(type);
 
                         if (type == "previous") {
 
-                            _f = () => {
+                            btn.addEventListener('click', function () {
                                 let slide = parseInt(document.querySelector(`[data-slider-key="${sliderKey}"]`).getAttribute('data-slide-index'));
                                 $.slider.selectSlider((slide - 1), sliderKey);
-                            };
+                                console.log("sol");
+                            });
 
                         } else if (type == "next") {
-                            _f = () => {
+
+                            btn.addEventListener('click', function () {
                                 let slide = parseInt(document.querySelector(`[data-slider-key="${sliderKey}"]`).getAttribute('data-slide-index'));
                                 $.slider.selectSlider((slide + 1), sliderKey);
-                            };
+                                console.log("sağ");
+                            });
+
                         }
-
-                        btn.addEventListener('mouseenter', function () {
-                            if (mouse) {
-                                _f();
-                            }
-                        });
-
-                        btn.addEventListener('click', function () {
-                            _f();
-                        });
 
                         slider.appendChild(btn);
                     });
