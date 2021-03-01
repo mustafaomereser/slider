@@ -91,6 +91,8 @@
     position: absolute;
     top: 37%;
     margin: 0 2vw;
+    line-height: normal;
+    font-family: none;
 }
 
 .data-slider .slider-navigate-button:hover {
