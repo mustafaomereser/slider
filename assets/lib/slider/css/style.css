@@ -91,6 +91,8 @@
     position: absolute;
     top: 37%;
     margin: 0 2vw;
+
+    /* Bootstrap normalizasyon */
     line-height: normal;
     font-family: none;
 }
