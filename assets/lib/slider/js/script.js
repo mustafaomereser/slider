@@ -12,7 +12,10 @@ body.addEventListener('mouseup', function () {
 
 $ = {};
 
+$.sliderList = {};
+
 $.slider = {
+
     build: (_) => {
         let sliders = document.querySelectorAll(_);
 
@@ -66,12 +69,18 @@ $.slider = {
                 $.slider.selectSlider(0, sliderKey);
 
                 if (slider.getAttribute('carousel') == "true") {
+
                     let time = parseInt(slider.getAttribute('carousel-time'));
 
-                    setInterval(function () {
-                        let index = parseInt(document.querySelector(`[data-slider-key="${sliderKey}"]`).getAttribute('data-slide-index'));
-                        $.slider.selectSlider(index + 1, sliderKey);
-                    }, ((time ? time : 1) * 1000));
+                    $.sliderList[sliderKey] = function () {
+                        return setInterval(function () {
+                            let index = parseInt(document.querySelector(`[data-slider-key="${sliderKey}"]`).getAttribute('data-slide-index'));
+                            $.slider.selectSlider(index + 1, sliderKey);
+                        }, ((time ? time : 1) * 1000));
+                    };
+
+                    $.sliderList[sliderKey]['carouselFunctionCache'] = $.sliderList[sliderKey]();
+
                 }
 
                 if (slider.getAttribute('navigate') == "true") {
@@ -126,6 +135,12 @@ $.slider = {
         }
     },
     selectSlider: (index, key) => {
+
+        let listItem = $.sliderList[key];
+        if (listItem) {
+            clearInterval(listItem['carouselFunctionCache']);
+            $.sliderList[key]['carouselFunctionCache'] = listItem();
+        }
 
         index = parseInt(index);
 
